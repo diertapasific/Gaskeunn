@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".TicketDetailPage">
+
+    <ImageView
+        android:id="@+id/ticketImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/news2"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/ticketName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title of the news"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_below="@+id/ticketImage"
+        android:textStyle="bold"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/ticketPrice"
+        android:text="18 March 2022"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/ticketDesc"
+        android:text="Ceritanya ini ada di ujung dunia"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="60dp"/>
+
+    <EditText
+        android:id="@+id/ticketQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textColor="@color/white"
+        android:hint="Quantity"
+        android:textColorHint="@color/white"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        app:backgroundTint="@color/white"
+        android:layout_below="@id/ticketDesc"
+        android:padding="20dp"
+        />
+
+    <Button
+        android:id="@+id/buttonPurchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:width="200dp"
+        android:height="60dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Purchase"
+        android:backgroundTint="#D65A31"
+        android:textColor="#212121"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ticketQ"/>
+
+
+</RelativeLayout>
