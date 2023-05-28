@@ -1,5 +1,6 @@
 package com.example.uts;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,55 +13,60 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.uts.model.NewsHeadlines;
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
-    Context context;
-    ArrayList<News> news;
-    public NewsAdapter(Context context, ArrayList<News> items) {
+    private Context context;
+    private List<NewsHeadlines> headlines;
+    private SelectListener listener;
+
+    public NewsAdapter(Context context, List<NewsHeadlines> headlines, SelectListener listener) {
         this.context = context;
-        this.news = items;
+        this.headlines = headlines;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public NewsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.news_item,parent,false);
-        return new ViewHolder(view);
+        return new NewsAdapter.ViewHolder(LayoutInflater.from(context).inflate(R.layout.news_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsAdapter.ViewHolder holder, int position) {
-        holder.newsTitle.setText(news.get(position).getTitle());
-        holder.newsDate.setText(news.get(position).getDate());
-        holder.newsImage.setImageResource(news.get(position).getImage());
-
-        holder.newsCv.setOnClickListener(view -> {
-            Intent intent = new Intent(context, NewsDetailPage.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("newsTitle",news.get(position).getTitle());
-            intent.putExtra("newsDate",news.get(position).getDate());
-            context.startActivity(intent);
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        holder.text_title.setText(headlines.get(position).getTitle());
+        holder.text_source.setText(headlines.get(position).getSource().getName());
+        if (headlines.get(position).getUrlToImage() != null) {
+            Picasso.get().load(headlines.get(position).getUrlToImage()).into(holder.img_headline);
+        }
+        holder.cardView.setOnClickListener(view -> {
+            listener.OnNewsClicked(headlines.get(position));
         });
     }
 
     @Override
     public int getItemCount() {
-        return news.size();
+        return headlines.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-    TextView newsTitle, newsDate;
-    ImageView newsImage;
-    CardView newsCv;
+        TextView text_title, text_source;
+        ImageView img_headline;
+        CardView cardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            newsImage = itemView.findViewById(R.id.newsImage);
-            newsTitle = itemView.findViewById(R.id.newsTitle);
-            newsDate = itemView.findViewById(R.id.newsDate);
-            newsCv = itemView.findViewById(R.id.newsCv);
+
+            text_title = itemView.findViewById(R.id.text_title);
+            text_source = itemView.findViewById(R.id.text_source);
+            img_headline = itemView.findViewById(R.id.img_headline);
+            cardView = itemView.findViewById(R.id.main_container);
         }
     }
 }

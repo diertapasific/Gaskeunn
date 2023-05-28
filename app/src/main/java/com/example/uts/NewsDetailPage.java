@@ -2,44 +2,39 @@ package com.example.uts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class NewsDetailPage extends AppCompatActivity {
-    ImageView newsImage;
-    TextView newsTitle, newsDate, newsDesc;
+import com.example.uts.model.NewsHeadlines;
+import com.squareup.picasso.Picasso;
 
+public class NewsDetailPage extends AppCompatActivity {
+    NewsHeadlines headlines;
+    TextView txt_title, txt_author, txt_time, txt_detail, txt_content;
+    ImageView img_news;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail_page);
 
-        newsImage = findViewById(R.id.newsImage);
-        newsTitle = findViewById(R.id.newsTitle);
-        newsDate = findViewById(R.id.newsDate);
-        newsDesc = findViewById(R.id.newsDesc);
+        txt_title = findViewById(R.id.text_detail_title);
+        txt_author = findViewById(R.id.text_detail_author);
+        txt_time = findViewById(R.id.text_detail_time);
+        txt_detail = findViewById(R.id.text_detail_detail);
+        txt_content = findViewById(R.id.text_detail_content);
+        img_news = findViewById(R.id.img_detail_news);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            newsTitle.setText(extras.getString("newsTitle"));
-            newsDate.setText(extras.getString("newsDate"));
-            if (extras.getString("newsTitle").equals("Richard won again!")){
-                newsDesc.setText(R.string.desc1);
-                newsImage.setImageResource(R.drawable.news1);
-            } else if (extras.getString("newsTitle").equals("Richard won first place!")){
-                newsDesc.setText(R.string.desc2);
-                newsImage.setImageResource(R.drawable.news2);
-            } else if (extras.getString("newsTitle").equals("Highest jump ever?")){
-                newsDesc.setText(R.string.desc3);
-                newsImage.setImageResource(R.drawable.news3);
-            } else if (extras.getString("newsTitle").equals("Fun in the city!")){
-                newsDesc.setText(R.string.desc4);
-                newsImage.setImageResource(R.drawable.news4);
-            } else if (extras.getString("newsTitle").equals("Two winner! How?")){
-                newsDesc.setText(R.string.desc5);
-                newsImage.setImageResource(R.drawable.news5);
-            }
-        }
+        headlines = (NewsHeadlines) getIntent().getSerializableExtra("data");
+
+        txt_title.setText(headlines.getTitle());
+        txt_author.setText(headlines.getAuthor());
+        txt_time.setText(headlines.getPublishedAt());
+        txt_detail.setText(headlines.getDescription());
+        txt_content.setText(headlines.getContent());
+        Picasso.get().load(headlines.getUrlToImage()).into(img_news);
     }
 }
