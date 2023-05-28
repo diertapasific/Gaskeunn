@@ -22,7 +22,7 @@ public class RequestManager {
 
     public void getNewsHeadlines(OnFetchDataListener listener){
         CallNewsApi callNewsApi = retrofit.create(CallNewsApi.class);
-        Call<NewsApiResponse> call = callNewsApi.callHeadlines("id",context.getString(R.string.api_key));
+        Call<NewsApiResponse> call = callNewsApi.callHeadlines("us",context.getString(R.string.api_key));
 
         try {
             call.enqueue(new Callback<NewsApiResponse>() {
