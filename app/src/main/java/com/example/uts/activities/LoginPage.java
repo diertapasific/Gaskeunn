@@ -1,4 +1,4 @@
-package com.example.uts;
+package com.example.uts.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.uts.R;
 
 import java.util.Map;
 
@@ -49,22 +51,39 @@ public class LoginPage extends AppCompatActivity {
 
     private void setListener(){
         loginButton.setOnClickListener(e -> {
-            if (emailTextField.getText().toString().equals(sp.getString(emailTextField.getText().toString(),""))
-                    && passwordTextField.getText().toString().equals(sp.getString(emailTextField.getText().toString()+"pass",""))){
+            String email = emailTextField.getText().toString();
+            String password = passwordTextField.getText().toString();
+
+            if (isInputValid(email, password)){
                 showToast("Login Success");
-                Intent intent = new Intent(this, NewsPage.class);
-                intent.putExtra("loggedIn",emailTextField.getText().toString());
-                startActivity(intent);
-            }
-            else {
+                startNewspage();
+            }else {
                 showToast("Login Failed");
             }
         });
 
         signUpHereText.setOnClickListener(e -> {
-            Intent intent = new Intent(this, RegisterPage.class);
-            startActivity(intent);
+            startRegisterPage();
         });
+    }
+
+    private boolean isInputValid(String email, String password){
+        String sharedPreferencesEmail = sp.getString(email, "");
+        String sharedPreferencesPassword = sp.getString(email + "pass", "");
+
+        return email.equals(sharedPreferencesEmail) && password.equals(sharedPreferencesPassword);
+    }
+
+    private void startNewspage(){
+        Intent intent = new Intent(this, NewsPage.class);
+        intent.putExtra("loggedIn",emailTextField.getText().toString());
+        startActivity(intent);
+        finish();
+    }
+
+    private void startRegisterPage(){
+        Intent intent = new Intent(this, RegisterPage.class);
+        startActivity(intent);
     }
 
     private void showToast(String message){

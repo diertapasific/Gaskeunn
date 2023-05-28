@@ -1,4 +1,4 @@
-package com.example.uts;
+package com.example.uts.models;
 
 public class News {
     String title, date;

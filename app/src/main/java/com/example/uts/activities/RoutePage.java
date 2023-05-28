@@ -1,20 +1,18 @@
-package com.example.uts;
+package com.example.uts.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.uts.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
-
-public class TicketPage extends AppCompatActivity {
+public class RoutePage extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
@@ -30,29 +28,19 @@ public class TicketPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_news:
-                        startActivity(new Intent(TicketPage.this, NewsPage.class));
+                        startActivity(new Intent(RoutePage.this, NewsPage.class));
+                        finish();
                         return true;
                     case R.id.navigation_ticket:
                         return true;
                     case R.id.navigation_history:
-                        startActivity(new Intent(TicketPage.this, ProfilePage.class));
+                        startActivity(new Intent(RoutePage.this, ProfilePage.class));
+                        finish();
                         return true;
                 }
                 return false;
             }
         });
         bottomNavigationView.setSelectedItemId(R.id.navigation_ticket);
-
-        // recyclerview
-        recyclerView = findViewById(R.id.rvTicket);
-        ArrayList<Ticket> tickets = new ArrayList<>();
-        tickets.add(new Ticket("Dirt Derby Dash","40USD",R.drawable.not_available));
-        tickets.add(new Ticket("Rock Rumble Rally","50USD",R.drawable.not_available));
-        tickets.add(new Ticket("Cliffside Challenge","80USD",R.drawable.not_available));
-        tickets.add(new Ticket("Trail Throwdown","30USD",R.drawable.not_available));
-        tickets.add(new Ticket("Mountain Madness Mayhem","60USD",R.drawable.not_available));
-
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(new TicketAdapter(getApplicationContext(),tickets));
     }
 }

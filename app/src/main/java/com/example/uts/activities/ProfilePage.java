@@ -1,8 +1,7 @@
-package com.example.uts;
+package com.example.uts.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +10,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.uts.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.Map;
 
 public class ProfilePage extends AppCompatActivity {
     SharedPreferences sp,sp2;
@@ -35,7 +33,7 @@ public class ProfilePage extends AppCompatActivity {
                         startActivity(new Intent(ProfilePage.this, NewsPage.class));
                         return true;
                     case R.id.navigation_ticket:
-                        startActivity(new Intent(ProfilePage.this, TicketPage.class));
+                        startActivity(new Intent(ProfilePage.this, RoutePage.class));
                         return true;
                     case R.id.navigation_history:
                         return true;

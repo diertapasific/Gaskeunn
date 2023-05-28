@@ -1,9 +1,11 @@
-package com.example.uts;
+package com.example.uts.utils;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.uts.model.NewsApiResponse;
+import com.example.uts.R;
+import com.example.uts.models.NewsApiResponse;
+import com.example.uts.utils.OnFetchDataListener;
 
 import retrofit2.Call;
 import retrofit2.Callback;

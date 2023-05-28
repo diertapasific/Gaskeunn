@@ -1,4 +1,4 @@
-package com.example.uts;
+package com.example.uts.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.uts.model.NewsHeadlines;
+import com.example.uts.R;
+import com.example.uts.models.NewsHeadlines;
 import com.squareup.picasso.Picasso;
 
 public class NewsDetailPage extends AppCompatActivity {

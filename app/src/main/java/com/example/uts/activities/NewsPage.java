@@ -1,12 +1,17 @@
-package com.example.uts;
+package com.example.uts.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.uts.model.NewsApiResponse;
-import com.example.uts.model.NewsHeadlines;
+import com.example.uts.R;
+import com.example.uts.adapters.NewsAdapter;
+import com.example.uts.models.NewsApiResponse;
+import com.example.uts.models.NewsHeadlines;
+import com.example.uts.utils.OnFetchDataListener;
+import com.example.uts.utils.RequestManager;
+import com.example.uts.utils.SelectListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.annotation.SuppressLint;
@@ -20,7 +25,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.List;
 
-public class NewsPage extends AppCompatActivity implements SelectListener{
+public class NewsPage extends AppCompatActivity implements SelectListener {
 
     RecyclerView recyclerView;
     SharedPreferences sp;
@@ -50,10 +55,12 @@ public class NewsPage extends AppCompatActivity implements SelectListener{
                     case R.id.navigation_news:
                         return true;
                     case R.id.navigation_ticket:
-                        startActivity(new Intent(NewsPage.this, TicketPage.class));
+                        startActivity(new Intent(NewsPage.this, RoutePage.class));
+                        finish();
                         return true;
                     case R.id.navigation_history:
                         startActivity(new Intent(NewsPage.this, ProfilePage.class));
+                        finish();
                         return true;
                 }
                 return false;
