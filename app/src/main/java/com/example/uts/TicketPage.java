@@ -21,7 +21,7 @@ public class TicketPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_page);
+        setContentView(R.layout.activity_route_page);
 
         // bottom navbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
@@ -52,7 +52,7 @@ public class TicketPage extends AppCompatActivity {
         tickets.add(new Ticket("Trail Throwdown","30USD",R.drawable.not_available));
         tickets.add(new Ticket("Mountain Madness Mayhem","60USD",R.drawable.not_available));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new TicketAdapter(getApplicationContext(),tickets));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(new TicketAdapter(getApplicationContext(),tickets));
     }
 }

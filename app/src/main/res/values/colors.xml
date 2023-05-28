@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#D65A31</color>
+    <color name="navy_darker">#181d24</color>
     <color name="navy">#222831</color>
     <color name="gaskeun_background">#666F80</color>
     <color name="gaskeun_pink">#FC6C6C</color>
