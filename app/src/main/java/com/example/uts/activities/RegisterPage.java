@@ -1,4 +1,4 @@
-package com.example.uts;
+package com.example.uts.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.uts.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,14 +33,13 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     private void initialize(){
+        sp = getSharedPreferences("UserInfo",MODE_PRIVATE);
         nameTextField = findViewById(R.id.nameRegisterField);
         emailTextField = findViewById(R.id.emailRegisterField);
         passwordTextField = findViewById(R.id.passwordRegisterField);
         signUpButton = findViewById(R.id.signUpButton);
         loginHereText = findViewById(R.id.signInHere);
         setListener();
-
-        sp = getSharedPreferences("UserInfo",MODE_PRIVATE);
     }
 
     private void setListener(){
@@ -54,20 +55,16 @@ public class RegisterPage extends AppCompatActivity {
             }else if(!isPasswordAlphanumeric(password)){
                 showToast("Password must be alphanumeric!");
             }else{
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString(email,email);
-                editor.putString(email+"name",name);
-                editor.putString(email+"pass",password);
-                editor.apply();
+                insertUser(name, email, password);
                 showToast("Register Success!");
-                openLoginPage();
+                startLoginPage();
             }
         });
 
-        loginHereText.setOnClickListener(e -> openLoginPage());
+        loginHereText.setOnClickListener(e -> startLoginPage());
     }
 
-    private void openLoginPage(){
+    private void startLoginPage(){
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
@@ -91,6 +88,14 @@ public class RegisterPage extends AppCompatActivity {
 
     private boolean isEmailValid(String email){
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private void insertUser(String name, String email, String password){
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(email,email);
+        editor.putString(email+"name",name);
+        editor.putString(email+"pass",password);
+        editor.apply();
     }
 
     private void showToast(String message){

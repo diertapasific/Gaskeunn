@@ -14,25 +14,24 @@
         android:theme="@style/Theme.UTS"
         tools:targetApi="31">
         <activity
-            android:name=".TicketDetailPage"
+            android:name=".activities.NewsDetailPage"
             android:exported="false" />
         <activity
-            android:name=".NewsDetailPage"
+            android:name=".activities.ProfilePage"
             android:exported="false" />
         <activity
-            android:name=".ProfilePage"
+            android:name=".activities.RoutePage"
             android:exported="false" />
         <activity
-            android:name=".TicketPage"
+            android:name=".activities.NewsPage"
             android:exported="false" />
         <activity
-            android:name=".NewsPage"
+            android:name=".activities.RegisterPage"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
-            android:name=".RegisterPage"
-            android:exported="false" />
-        <activity
-            android:name=".LoginPage"
+            android:name=".activities.LoginPage"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
