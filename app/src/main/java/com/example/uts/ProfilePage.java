@@ -2,28 +2,28 @@ package com.example.uts;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-public class HistoryPage extends AppCompatActivity {
-
-    RecyclerView recyclerView;
+public class ProfilePage extends AppCompatActivity {
     SharedPreferences sp,sp2;
+    TextView name, email;
+    Button logoutBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history_page);
+        setContentView(R.layout.activity_profile_page);
 
         // bottom navbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
@@ -32,10 +32,10 @@ public class HistoryPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_news:
-                        startActivity(new Intent(HistoryPage.this, NewsPage.class));
+                        startActivity(new Intent(ProfilePage.this, NewsPage.class));
                         return true;
                     case R.id.navigation_ticket:
-                        startActivity(new Intent(HistoryPage.this, TicketPage.class));
+                        startActivity(new Intent(ProfilePage.this, TicketPage.class));
                         return true;
                     case R.id.navigation_history:
                         return true;
@@ -45,28 +45,24 @@ public class HistoryPage extends AppCompatActivity {
         });
         bottomNavigationView.setSelectedItemId(R.id.navigation_history);
 
-        // recyclerview
         sp = getSharedPreferences("loggedIn", MODE_PRIVATE);
+        sp2 = getSharedPreferences("UserInfo", MODE_PRIVATE);
         String loggedIn = sp.getString("loggedIn","");
 
-        sp2 = getSharedPreferences(loggedIn+"cart", MODE_PRIVATE);
+        String loggedInName = sp2.getString(loggedIn+"name","");
+        String loggedInMail = sp2.getString(loggedIn,"");
 
-        Map<String, ?> allEntries = sp2.getAll();
-        int count = allEntries.size();
+        name = findViewById(R.id.profileName);
+        email = findViewById(R.id.profileMail);
+        logoutBtn = findViewById(R.id.logoutBtn);
 
-        recyclerView = findViewById(R.id.rvHistory);
-        ArrayList<History> histories = new ArrayList<>();
-        for (int i=0; i<count;i++){
-            String counter = Integer.toString(i);
-            if (sp2.getString("name"+counter,"").equals("")){
-                continue;
-            }
-            histories.add(new History(sp2.getString("name"+counter,"")
-                    ,sp2.getString("q"+counter,"")
-                    ,sp2.getString("date"+counter,"")));
-        }
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new HistoryAdapter(getApplicationContext(),histories));
+        name.setText(loggedInName);
+        email.setText(loggedInMail);
+
+        logoutBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, LoginPage.class);
+            startActivity(intent);
+        });
 
     }
 }

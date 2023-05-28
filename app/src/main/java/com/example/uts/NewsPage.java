@@ -3,7 +3,6 @@ package com.example.uts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uts.model.NewsApiResponse;
@@ -16,21 +15,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NewsPage extends AppCompatActivity implements SelectListener{
 
     RecyclerView recyclerView;
     SharedPreferences sp;
-    ImageButton logoutBtn;
-
     NewsAdapter adapter;
-
     ProgressDialog dialog;
 
     @SuppressLint("WrongViewCast")
@@ -59,7 +53,7 @@ public class NewsPage extends AppCompatActivity implements SelectListener{
                         startActivity(new Intent(NewsPage.this, TicketPage.class));
                         return true;
                     case R.id.navigation_history:
-                        startActivity(new Intent(NewsPage.this, HistoryPage.class));
+                        startActivity(new Intent(NewsPage.this, ProfilePage.class));
                         return true;
                 }
                 return false;
@@ -68,18 +62,11 @@ public class NewsPage extends AppCompatActivity implements SelectListener{
         bottomNavigationView.setSelectedItemId(R.id.navigation_news);
 
         dialog = new ProgressDialog(this);
-        dialog.setTitle("Fetching news articles..");
         dialog.show();
 
         // recyclerview
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener);
-
-        logoutBtn = findViewById(R.id.logoutBtn);
-        logoutBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, LoginPage.class);
-            startActivity(intent);
-        });
 
     }
     private final OnFetchDataListener<NewsApiResponse> listener = new OnFetchDataListener<NewsApiResponse>() {

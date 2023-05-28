@@ -48,19 +48,19 @@ public class TicketDetailPage extends AppCompatActivity {
             ticketPrice.setText(extras.getString("ticketPrice"));
             if (extras.getString("ticketPrice").equals("40USD")){
                 ticketDesc.setText(R.string.tdesc1);
-                ticketImage.setImageResource(R.drawable.ticket1);
+                ticketImage.setImageResource(R.drawable.not_available);
             } else if (extras.getString("ticketPrice").equals("50USD")){
                 ticketDesc.setText(R.string.tdesc2);
-                ticketImage.setImageResource(R.drawable.ticket2);
+                ticketImage.setImageResource(R.drawable.not_available);
             } else if (extras.getString("ticketPrice").equals("80USD")){
                 ticketDesc.setText(R.string.tdesc3);
-                ticketImage.setImageResource(R.drawable.ticket3);
+                ticketImage.setImageResource(R.drawable.not_available);
             } else if (extras.getString("ticketPrice").equals("30USD")){
                 ticketDesc.setText(R.string.tdesc4);
-                ticketImage.setImageResource(R.drawable.ticket4);
+                ticketImage.setImageResource(R.drawable.not_available);
             } else if (extras.getString("ticketPrice").equals("60USD")){
                 ticketDesc.setText(R.string.tdesc5);
-                ticketImage.setImageResource(R.drawable.ticket5);
+                ticketImage.setImageResource(R.drawable.not_available);
             }
         }
         purchaseBtn.setOnClickListener(view -> {

@@ -20,7 +20,7 @@
             android:name=".NewsDetailPage"
             android:exported="false" />
         <activity
-            android:name=".HistoryPage"
+            android:name=".ProfilePage"
             android:exported="false" />
         <activity
             android:name=".TicketPage"

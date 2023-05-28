@@ -35,7 +35,7 @@ public class TicketPage extends AppCompatActivity {
                     case R.id.navigation_ticket:
                         return true;
                     case R.id.navigation_history:
-                        startActivity(new Intent(TicketPage.this, HistoryPage.class));
+                        startActivity(new Intent(TicketPage.this, ProfilePage.class));
                         return true;
                 }
                 return false;
@@ -46,11 +46,11 @@ public class TicketPage extends AppCompatActivity {
         // recyclerview
         recyclerView = findViewById(R.id.rvTicket);
         ArrayList<Ticket> tickets = new ArrayList<>();
-        tickets.add(new Ticket("Dirt Derby Dash","40USD",R.drawable.ticket1));
-        tickets.add(new Ticket("Rock Rumble Rally","50USD",R.drawable.ticket2));
-        tickets.add(new Ticket("Cliffside Challenge","80USD",R.drawable.ticket3));
-        tickets.add(new Ticket("Trail Throwdown","30USD",R.drawable.ticket4));
-        tickets.add(new Ticket("Mountain Madness Mayhem","60USD",R.drawable.ticket5));
+        tickets.add(new Ticket("Dirt Derby Dash","40USD",R.drawable.not_available));
+        tickets.add(new Ticket("Rock Rumble Rally","50USD",R.drawable.not_available));
+        tickets.add(new Ticket("Cliffside Challenge","80USD",R.drawable.not_available));
+        tickets.add(new Ticket("Trail Throwdown","30USD",R.drawable.not_available));
+        tickets.add(new Ticket("Mountain Madness Mayhem","60USD",R.drawable.not_available));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new TicketAdapter(getApplicationContext(),tickets));
