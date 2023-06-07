@@ -41,8 +41,9 @@ public class LoginPage extends AppCompatActivity {
         Map<String, ?> allEntries = sp.getAll();
         if (allEntries.isEmpty()) {
             SharedPreferences.Editor editor = sp.edit();
-            editor.putString("mae","mae");
-            editor.putString("mae"+"pass","123");
+            editor.putString("mae.com","mae.com");
+            editor.putString("mae.com"+"pass","123");
+            editor.putString("mae.com"+"name","MaeChuuya");
             editor.apply();
         }
 
