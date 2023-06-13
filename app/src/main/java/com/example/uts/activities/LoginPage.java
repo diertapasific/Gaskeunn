@@ -19,7 +19,6 @@ public class LoginPage extends AppCompatActivity {
     private EditText emailTextField, passwordTextField;
     private Button loginButton;
     private TextView signUpHereText;
-
     SharedPreferences sp;
 
     @Override

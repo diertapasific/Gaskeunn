@@ -49,6 +49,12 @@
                 android:background="@drawable/dropdown_styling"
                 android:layout_marginBottom="6dp"
                 android:padding="20dp" />
+            <TextView
+                android:id="@+id/routePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Price : " />
 
         </LinearLayout>
 
@@ -57,8 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/mapabalabal" />
+            android:scaleType="fitXY"
+            android:src="@drawable/atod" />
 
     </LinearLayout>
 
