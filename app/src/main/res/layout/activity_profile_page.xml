@@ -104,6 +104,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/dropdown_styling"
+        app:itemIconTint="@layout/bottom_nav_selector"
+        app:itemTextColor="@layout/bottom_nav_selector"
         app:menu="@menu/bottom_navigation_menu" />
 
 

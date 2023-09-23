@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:layout_marginBottom="6dp"
+                android:textStyle="bold"
                 android:text="Your Location:" />
 
             <Spinner
@@ -38,6 +39,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginBottom="6dp"
                 android:text="Your Destination:" />
@@ -54,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 android:text="Price : " />
 
         </LinearLayout>
@@ -73,6 +76,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:itemRippleColor="@color/black"
+        android:background="@drawable/dropdown_styling"
+        app:menu="@menu/bottom_navigation_menu"
+        app:itemIconTint="@layout/bottom_nav_selector"
+        app:itemTextColor="@layout/bottom_nav_selector"/>
 
 </RelativeLayout>
