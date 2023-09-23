@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gaskeun_background"
+    tools:context=".activities.NewsDetailPage">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:background="@color/gaskeun_background"
+                    android:padding="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_detail_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gaskeun_pink"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/img_detail_news"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/not_available" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/text_detail_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gaskeun_card"
+                            android:textStyle="bold"
+                            android:textAlignment="center"
+                            android:layout_marginTop="6dp"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/text_detail_time"
+                            android:layout_width="wrap_content"
+                            android:paddingLeft="35dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:textStyle="bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/gaskeun_card"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_detail_detail"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_margin="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_detail_content"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_margin="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
